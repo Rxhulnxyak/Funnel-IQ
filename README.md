@@ -123,6 +123,6 @@ This dashboard is configured for seamless deployment on **Streamlit Community Cl
 
 ---
 <div align="center">
-  <i>Designed and developed by <b>Rohith</b>.</i><br>
+  <i>Designed and developed by <b>Rahul</b>.</i><br>
   <i>Showcasing Data Engineering, Product Analytics, and Business Intelligence.</i>
 </div>
