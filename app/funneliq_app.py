@@ -110,8 +110,14 @@ elif page == "Funnel Analysis":
     # Abandonment Rate
     st.subheader("Critical Drop-offs")
     col1, col2 = st.columns(2)
-    cart_abandonment = 100 - (funnel_df.loc[3, 'Users'] / funnel_df.loc[2, 'Users'] * 100)
-    checkout_abandonment = 100 - (funnel_df.loc[4, 'Users'] / funnel_df.loc[3, 'Users'] * 100)
+    
+    # Safe division to prevent RuntimeWarning
+    cart_added = funnel_df.loc[2, 'Users']
+    checkout_started = funnel_df.loc[3, 'Users']
+    purchased = funnel_df.loc[4, 'Users']
+    
+    cart_abandonment = 100 - (checkout_started / cart_added * 100) if cart_added > 0 else 0
+    checkout_abandonment = 100 - (purchased / checkout_started * 100) if checkout_started > 0 else 0
     
     with col1:
         st.error(f"🛒 Cart Abandonment Rate: **{cart_abandonment:.1f}%**")
